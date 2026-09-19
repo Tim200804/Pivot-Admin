@@ -100,5 +100,31 @@ export const adminApi = {
   deleteHealthMetric: (id) =>
     apiFetch(`/api/admin/health-metrics/${id}`, { method: 'DELETE' }),
 
+  batchDeleteHealthMetrics: (ids) =>
+    apiFetch('/api/admin/health-metrics/batch-delete', {
+      method: 'POST',
+      body: JSON.stringify({ ids }),
+    }),
+
   listAthletesForMetrics: () => apiFetch('/api/admin/health-metrics/athletes'),
+
+  previewHealthMetricsImport: (file) => {
+    const fd = new FormData()
+    fd.append('file', file)
+    return apiFetch('/api/admin/health-metrics/import-preview', {
+      method: 'POST',
+      headers: {},
+      body: fd,
+    })
+  },
+
+  importHealthMetrics: (file) => {
+    const fd = new FormData()
+    fd.append('file', file)
+    return apiFetch('/api/admin/health-metrics/import', {
+      method: 'POST',
+      headers: {},
+      body: fd,
+    })
+  },
 }
