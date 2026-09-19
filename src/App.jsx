@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import UsersPage from './pages/UsersPage'
+import MetricsPage from './pages/MetricsPage'
 import ImportPage from './pages/ImportPage'
 import { adminApi } from './utils/api'
 
@@ -49,6 +50,7 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<DashboardPage />} />
                 <Route path="/users" element={<UsersPage />} />
+                <Route path="/metrics" element={<MetricsPage />} />
                 <Route path="/import" element={<ImportPage />} />
               </Routes>
             </Layout>

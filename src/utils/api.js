@@ -76,4 +76,29 @@ export const adminApi = {
       body: fd,
     })
   },
+
+  // Health metrics
+  listHealthMetrics: (params = {}) => {
+    const qs = new URLSearchParams(params).toString()
+    return apiFetch(`/api/admin/health-metrics?${qs}`)
+  },
+
+  getHealthMetric: (id) => apiFetch(`/api/admin/health-metrics/${id}`),
+
+  createHealthMetric: (body) =>
+    apiFetch('/api/admin/health-metrics', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    }),
+
+  updateHealthMetric: (id, body) =>
+    apiFetch(`/api/admin/health-metrics/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+    }),
+
+  deleteHealthMetric: (id) =>
+    apiFetch(`/api/admin/health-metrics/${id}`, { method: 'DELETE' }),
+
+  listAthletesForMetrics: () => apiFetch('/api/admin/health-metrics/athletes'),
 }
